@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 import Sidebar from '@/components/Sidebar'
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
 })

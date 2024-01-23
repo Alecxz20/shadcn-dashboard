@@ -108,7 +108,7 @@ type Payment = {
 }
 
 // Columns
-export const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'order',
     header: 'Order',
