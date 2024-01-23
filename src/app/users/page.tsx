@@ -1,8 +1,63 @@
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
+/** @format */
 'use client'
 
 import { DataTable } from '@/components/DataTable'
 import { ColumnDef } from '@tanstack/react-table'
 import PageTitle from '@/components/PageTitle'
+
+// Prop-types
+type Props = {}
+type Payment = {
+  name: string
+  email: string
+  lastOrder: string
+  method: string
+}
+
+// Columns
+const columns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: 'name',
+    header: 'Name',
+    cell: ({ row }) => {
+      return (
+        <div className="flex gap-2 items-center">
+          {
+            <div className="h-12 w-12 rounded-full bg-gray-100 p-1">
+              <img
+                width={200}
+                height={200}
+                src={`https://api.dicebear.com/7.x/lorelei/svg?seed=${row.getValue(
+                  'name'
+                )}`}
+                alt="avatar"
+              />
+            </div>
+          }
+          {row.getValue('name')}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: 'email',
+    header: 'Email',
+  },
+  {
+    accessorKey: 'lastOrder',
+    header: 'Last Order',
+  },
+  {
+    accessorKey: 'method',
+    header: 'Method',
+  },
+]
 
 // Data
 const data: Payment[] = [
@@ -98,7 +153,7 @@ const data: Payment[] = [
   },
 ]
 
-export default function UsersPage(props: Payment) {
+export default function UsersPage({}: Props) {
   return (
     <main className="flex flex-col gap-5 w-full">
       <PageTitle title="Users" />
@@ -106,64 +161,3 @@ export default function UsersPage(props: Payment) {
     </main>
   )
 }
-
-// Prop-types
-type Payment = {
-  name: string
-  email: string
-  lastOrder: string
-  method:
-    | 'Credit Card'
-    | 'PayPal'
-    | 'Venmo'
-    | 'Payoneer'
-    | 'Apple Pay'
-    | 'Zelle'
-    | 'Stripe'
-    | 'Cash'
-    | 'Bank Transfer'
-    | 'Cryptocurrency'
-    | 'Google Pay'
-    | 'Alipay'
-    | 'WeChat Pay'
-    | 'Square Cash'
-}
-
-// Columns
-export const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: 'name',
-    header: 'Name',
-    cell: ({ row }) => {
-      return (
-        <div className='flex gap-2 items-center'>
-          {
-            <div className="h-12 w-12 rounded-full bg-gray-100 p-1">
-              <img
-                width={200}
-                height={200}
-                src={`https://api.dicebear.com/7.x/lorelei/svg?seed=${row.getValue(
-                  'name'
-                )}`}
-                alt="avatar"
-              />
-            </div>
-          }
-          {row.getValue('name')}
-        </div>
-      )
-    },
-  },
-  {
-    accessorKey: 'email',
-    header: 'Email',
-  },
-  {
-    accessorKey: 'lastOrder',
-    header: 'Last Order',
-  },
-  {
-    accessorKey: 'method',
-    header: 'Method',
-  },
-]

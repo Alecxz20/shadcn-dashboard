@@ -1,8 +1,29 @@
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
+/** @format */
 'use client'
 
 import { DataTable } from '@/components/DataTable'
 import { ColumnDef } from '@tanstack/react-table'
 import PageTitle from '@/components/PageTitle'
+
+// Prop-types
+type Props = {}
+
+interface Settings {
+  category: string
+  value: string | number | boolean
+}
 
 // Data
 const data: Settings[] = [
@@ -24,14 +45,8 @@ const data: Settings[] = [
   },
 ]
 
-// Prop-types
-export interface Settings {
-  category: string
-  value: string | number | boolean
-}
-
 // Columns
-export const columns: ColumnDef<Settings>[] = [
+const columns: ColumnDef<Settings>[] = [
   {
     accessorKey: 'category',
     header: 'Category',
@@ -42,7 +57,7 @@ export const columns: ColumnDef<Settings>[] = [
   },
 ]
 
-export default function SettingsPage(props: Settings) {
+export default function SettingsPage({}: Props) {
   return (
     <main className="flex flex-col gap-5 w-full">
       <PageTitle title="Settings" />

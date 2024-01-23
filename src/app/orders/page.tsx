@@ -1,9 +1,31 @@
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
+/** @format */
 'use client'
 
 import { DataTable } from '@/components/DataTable'
 import { ColumnDef } from '@tanstack/react-table'
 import PageTitle from '@/components/PageTitle'
 import { cn } from '@/lib/utils'
+
+// Prop-types
+type Props = {};
+type Payment = {
+  order: string
+  status: string
+  lastOrder: string
+  method: string
+}
 
 // Data
 const data: Payment[] = [
@@ -99,14 +121,6 @@ const data: Payment[] = [
   },
 ]
 
-// Prop-types
-type Payment = {
-  order: string
-  status: string
-  lastOrder: string
-  method: string
-}
-
 // Columns
 const columns: ColumnDef<Payment>[] = [
   {
@@ -140,7 +154,7 @@ const columns: ColumnDef<Payment>[] = [
   },
 ]
 
-export default function OrdersPage(props: Payment) {
+export default function OrdersPage({}: Props) {
   return (
     <main className="flex flex-col gap-5 w-full">
       <PageTitle title="Orders" />
